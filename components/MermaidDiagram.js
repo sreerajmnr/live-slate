@@ -7,7 +7,26 @@ let mermaidPromise;
 function loadMermaid() {
   if (!mermaidPromise) {
     mermaidPromise = import("mermaid").then(({ default: mermaid }) => {
-      mermaid.initialize({ startOnLoad: false, securityLevel: "strict", theme: "default" });
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "base",
+        themeVariables: {
+          fontFamily: "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+          fontSize: "13px",
+          primaryColor: "#e5f0fa",
+          primaryBorderColor: "#8cb6df",
+          primaryTextColor: "#1f2d3a",
+          secondaryColor: "#eaf3fb",
+          tertiaryColor: "#f5f9fc",
+          lineColor: "#6fa8dc",
+          edgeLabelBackground: "#ffffff",
+          actorBkg: "#e5f0fa",
+          actorBorder: "#8cb6df",
+          signalColor: "#4a86c5",
+          signalTextColor: "#1f2d3a",
+        },
+      });
       return mermaid;
     });
   }

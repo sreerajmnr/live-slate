@@ -61,7 +61,6 @@ export default function LoginForm() {
       <button className="btn btn-primary" type="submit" disabled={busy}>
         {busy ? "Signing in…" : "Sign in"}
       </button>
-      <p className="hint">Test account: <code>anvi</code> / <code>anvith</code></p>
     </form>
   );
 }

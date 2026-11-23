@@ -3,7 +3,7 @@
 A Next.js note-taking app with tabs and live Mermaid diagrams.
 
 ## Features
-- **Login screen by default.** Test account: `anvi` / `anvith`.
+- **Login screen by default.** Credentials come from environment variables (see below).
 - **Header:** app name at top left, user and log out at top right.
 - **Menu bar:** File, Edit, View, Insert, Help (placeholders for now).
 - **Tabs:** add, rename (double-click), close, and switch the tab position between **Top** (horizontal) and **Left** (vertical).
@@ -28,10 +28,15 @@ npm run dev
 Open http://localhost:3000.
 
 ## Deploy on Vercel
-Import the repo at https://vercel.com/new. Optional environment variables:
+1. Import the repo at https://vercel.com/new.
+2. In **Project → Settings → Environment Variables**, add these for Production and Preview:
 
-| Variable | Purpose | Default |
-|---|---|---|
-| `APP_USERNAME` | Login username | `anvi` |
-| `APP_PASSWORD` | Login password | `anvith` |
-| `SESSION_SECRET` | Signs the login cookie, so set a long random value in production | dev value |
+| Variable | Purpose |
+|---|---|
+| `APP_USERNAME` | Login username (required on Vercel) |
+| `APP_PASSWORD` | Login password (required on Vercel) |
+| `SESSION_SECRET` | A long random string that signs the login cookie (recommended) |
+
+3. Redeploy so the new values are picked up.
+
+When you run the app locally without these variables, a simple test login is used (see `lib/auth.js`). On Vercel, login stays disabled until the variables are set.

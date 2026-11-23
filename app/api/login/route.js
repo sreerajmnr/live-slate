@@ -14,6 +14,12 @@ export async function POST(request) {
   const { username = "", password = "" } = body;
   const creds = getCredentials();
 
+  if (!creds) {
+    return NextResponse.json(
+      { ok: false, error: "Login is not configured. Set APP_USERNAME and APP_PASSWORD in Vercel." },
+      { status: 503 }
+    );
+  }
   if (username.trim() !== creds.username || password !== creds.password) {
     return NextResponse.json(
       { ok: false, error: "Invalid username or password" },

@@ -45,7 +45,7 @@ export default function NoteEditor({ note, onChange }) {
           ))}
         </div>
         <button className="btn btn-ghost" onClick={insertDiagram}>
-          + Mermaid diagram
+          + <span className="hide-sm">Mermaid </span>diagram
         </button>
       </div>
 
