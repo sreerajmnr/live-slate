@@ -16,8 +16,8 @@ export async function POST(request) {
 
   if (!creds) {
     return NextResponse.json(
-      { ok: false, error: "Login is not configured. Set APP_USERNAME and APP_PASSWORD in Vercel." },
-      { status: 503 }
+      { ok: false, error: "User credentials don't exist" },
+      { status: 401 }
     );
   }
   if (username.trim() !== creds.username || password !== creds.password) {
