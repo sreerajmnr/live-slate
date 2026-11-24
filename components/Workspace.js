@@ -38,6 +38,7 @@ export default function Workspace({ username }) {
     updateNote,
     addNote: addSyncedNote,
     removeNote,
+    flush,
   } = useNotesSync({ username, initialNotes: INITIAL });
 
   const active = notes.find((n) => n.id === activeId) || notes[0];
@@ -57,6 +58,7 @@ export default function Workspace({ username }) {
   const updateContent = (content) => updateNote(active.id, { content });
 
   async function logout() {
+    await flush();
     await fetch("/api/logout", { method: "POST" });
     router.replace("/login");
     router.refresh();

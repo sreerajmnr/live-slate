@@ -14,7 +14,7 @@ A Next.js note-taking app with tabs and live Mermaid diagrams.
 
 ## Saving notes
 - With a database (`DATABASE_URL`, e.g. Neon via Vercel Storage), notes are saved to Postgres and appear on every device. The `notes` table is created automatically on first use.
-- Changes save about 1 second after you stop typing. The toolbar shows **Saving… / Saved**, or **Offline** if the connection drops.
+- Changes save about 5 seconds after you stop typing, and right away when you switch notes, leave the page or log out. The toolbar shows **Saving… / Saved**, or **Offline** if the connection drops.
 - A copy is also kept in the browser, so edits made offline are uploaded when the connection returns.
 - Without a database (e.g. running locally), notes are saved in the browser only.
 - The tab position (Top/Left) and open tab are remembered per device.
