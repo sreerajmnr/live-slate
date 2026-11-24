@@ -112,6 +112,7 @@ code {
 .save-saved::before { background: var(--blue); }
 .save-saving::before { background: var(--sky); animation: pulse 1s ease-in-out infinite; }
 .save-local::before { background: var(--faint); }
+.save-pending::before { background: var(--faint); }
 .save-offline, .save-error { color: var(--danger); }
 .save-offline::before, .save-error::before { background: var(--danger); }
 @keyframes pulse { 50% { opacity: 0.3; } }

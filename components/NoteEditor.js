@@ -10,6 +10,7 @@ const TEMPLATE = "\n```mermaid\nflowchart LR\n  A[Start] --> B{Decision}\n  B --
 
 const STATUS_TEXT = {
   loading: "Loading…",
+  pending: "Unsaved changes",
   saving: "Saving…",
   saved: "Saved",
   offline: "Offline · saved on this device",
