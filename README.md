@@ -12,7 +12,12 @@ A Next.js note-taking app with tabs and live Mermaid diagrams.
   - Each diagram can be swiped or toggled between **Diagram** and **Code**.
 - **Footer:** shows the version and build, e.g. `v1.0.0 · Build 47ca395 · production`.
 
-Notes are saved in the browser (localStorage) for now.
+## Saving notes
+- With a database (`DATABASE_URL`, e.g. Neon via Vercel Storage), notes are saved to Postgres and appear on every device. The `notes` table is created automatically on first use.
+- Changes save about 1 second after you stop typing. The toolbar shows **Saving… / Saved**, or **Offline** if the connection drops.
+- A copy is also kept in the browser, so edits made offline are uploaded when the connection returns.
+- Without a database (e.g. running locally), notes are saved in the browser only.
+- The tab position (Top/Left) and open tab are remembered per device.
 
 ## Version and build number
 - **Version** comes from `version` in `package.json`. Bump it for each release, then tag it on GitHub (e.g. `v1.0.1`).
@@ -36,6 +41,7 @@ Open http://localhost:3000.
 | `APP_USERNAME` | Login username (required on Vercel) |
 | `APP_PASSWORD` | Login password (required on Vercel) |
 | `SESSION_SECRET` | A long random string that signs the login cookie (recommended) |
+| `DATABASE_URL` | Postgres connection, added automatically when you connect Neon |
 
 3. Redeploy so the new values are picked up.
 

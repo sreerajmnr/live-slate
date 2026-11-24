@@ -8,7 +8,16 @@ const MODES = ["code", "split", "preview"];
 const MODE_LABELS = { code: "Code", split: "Split", preview: "Preview" };
 const TEMPLATE = "\n```mermaid\nflowchart LR\n  A[Start] --> B{Decision}\n  B -->|Yes| C[Do it]\n  B -->|No| D[Skip]\n```\n";
 
-export default function NoteEditor({ note, onChange }) {
+const STATUS_TEXT = {
+  loading: "Loading…",
+  saving: "Saving…",
+  saved: "Saved",
+  offline: "Offline · saved on this device",
+  local: "Saved in this browser",
+  error: "Couldn't save · note too large",
+};
+
+export default function NoteEditor({ note, onChange, status }) {
   const [mode, setMode] = useState("split");
   const textRef = useRef(null);
 
@@ -44,9 +53,16 @@ export default function NoteEditor({ note, onChange }) {
             </button>
           ))}
         </div>
-        <button className="btn btn-ghost" onClick={insertDiagram}>
-          + <span className="hide-sm">Mermaid </span>diagram
-        </button>
+        <div className="toolbar-right">
+          {status && (
+            <span className={`save-status save-${status}`} role="status" aria-live="polite">
+              {STATUS_TEXT[status]}
+            </span>
+          )}
+          <button className="btn btn-ghost" onClick={insertDiagram}>
+            + <span className="hide-sm">Mermaid </span>diagram
+          </button>
+        </div>
       </div>
 
       <div className={`editor-body mode-${mode}`} {...swipe}>
