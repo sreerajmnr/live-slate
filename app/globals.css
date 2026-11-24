@@ -103,6 +103,19 @@ code {
 .btn-primary:hover { background: var(--blue-strong); border-color: var(--blue-strong); }
 .btn-primary:disabled { opacity: 0.6; }
 .editor-toolbar .btn { white-space: nowrap; }
+.toolbar-right { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.save-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--muted); white-space: nowrap;
+}
+.save-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--faint); }
+.save-saved::before { background: var(--blue); }
+.save-saving::before { background: var(--sky); animation: pulse 1s ease-in-out infinite; }
+.save-local::before { background: var(--faint); }
+.save-pending::before { background: var(--faint); }
+.save-offline, .save-error { color: var(--danger); }
+.save-offline::before, .save-error::before { background: var(--danger); }
+@keyframes pulse { 50% { opacity: 0.3; } }
 
 /* Menu bar */
 .menubar {
@@ -379,4 +392,6 @@ code {
   .mode-split .editor-text { border-right: 0; border-bottom: 1px solid var(--border); min-height: 200px; }
   .swipe-hint { display: block; }
   .hide-sm { display: none; }
+  .save-status { font-size: 11px; }
+  .save-offline { max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
 }
